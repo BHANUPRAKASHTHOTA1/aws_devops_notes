@@ -58,3 +58,22 @@ change the ownership to user by using the below command
 	chown <username>:<groupname> -R file/folder
 	chown bhanu:bhanu -R .ssh
 
+user is leaving organisation
+---------------------------------
+we need to remove the user from devops group
+	gpasswd -d <username> <groupname>
+	gpasswd -d bhanu devops
+We will get error because his primary group is DevOps for that we need to change his primary group to his own group
+	usermod -g <groupname> <username>
+	usermod -g bhanu bhanu
+Now we can delete the user by using the below command
+	userdel <username>
+	userdel bhanu
+Delete the Group
+---------------------------------
+we need to delete the group by using the below command
+	groupdel <groupname>
+	groupdel devops 
+
+* make sure no users are existed in the group, if exists first need to remove the users from the group and then delete the group.
+
