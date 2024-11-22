@@ -77,3 +77,33 @@ we need to delete the group by using the below command
 
 * make sure no users are existed in the group, if exists first need to remove the users from the group and then delete the group.
 
+Process Management
+----------------------------------
+ps --> it lists the processes running
+ps -ef ---> it lists all the process running and telling the linux or you assigning a task to linux to give  the result of ps -ef
+	1. Foreground process ----> sleep 10
+	2. background process ----> Sleep20 &
+
+	ps -ef|grep sleep ----- > This is like an interview question.
+If you want to kill task 
+kill<PID>  ---> You are requesting to end the task.
+kill -9 <PID> ----> You are forcing to end the task.
+
+top ---> it will list down all the running tasks.
+
+Package Management
+-------------------------
+ubuntu ----> apt -get
+centos ----> yum
+aws linux 2 ---> amazon-linux-extras and yum
+
+1. sudo amazon-linux-extras install epel -y  ====> For AWS linux you need to install 1st this.
+2. yum install git -y
+3. yum remove git -y 
+4. yum list all           | yum list all | wc -l
+5. yum list installed     | yum list installed | wc -l
+6. yum list available     | yum list available | wc -l
+7. yum search git
+
+wc ===> word count 
+l ====> list 
