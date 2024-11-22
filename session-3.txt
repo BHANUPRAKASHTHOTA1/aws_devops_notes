@@ -1,0 +1,60 @@
+Session - 3
+--------------------------------
+Add the user
+password given to the user
+user info
+updating the user
+
+1. useradd <username>
+2. id <username>
+3. cat /etc/passwd
+4. /etc/passwd --> user info
+5. getent passwd ---> password entries
+
+create a password
+-----------------------------
+passwd <username>
+
+by default password authentication is disabled we need to enable it
+/etc/ssh/sshd_config -->this is a important file we need to take a backup 
+1. cp /etc/ssh/sshd_config /tmp/sshd_config_backup
+2. vim /etc/ssh/sshd_config 
+3. :/password 
+4. password authentication --> Yes
+5. if you want to check the changes done properly or not by using the cmd sshd -t
+6. systemctl restart sshd 
+7. now the user able to connect the vm by using password.
+
+Group
+-----------------------
+when ever you are created a group also created by default
+1. Primary Group - DevOps
+2. Secondary Group - Testers
+
+	groupadd <groupname>
+
+3. If we want to add Bhanu into the DevOps group by using the below command
+	usermod -g <groupname> <username>
+4. How to add secondary group by using the below command
+	usermod -aG <groupname> <username>
+		g --> primary Group
+	    G --> Secondary Group
+5. If we want to revoke the access to the users from group
+	gpasswd -d <username> <groupname>
+
+SSH key authentication to user
+-----------------------------------------------
+1. Bhanu have to create a public key and private key in his device.
+2. Share public key to admin
+3. Admin need to create a folder on user home directory ex: .ssh
+4. change permission to the folder by using the below
+	chmod 700 .ssh
+5. create a file called authorized_keys
+6. by using vim command need to open the authorized keys
+	vim authorized_keys --->then goto insert mode ---> paste the public key which was share by 	the user
+Ownership
+-------------------------
+change the ownership to user by using the below command
+	chown <username>:<groupname> -R file/folder
+	chown bhanu:bhanu -R .ssh
+
